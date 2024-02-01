@@ -37,7 +37,7 @@ public class FileCharacterCountController {
         latch.await();
         long endTime = System.currentTimeMillis();
         long totalTime = endTime - startTime;
-        System.out.println("millisecond took:" + totalTime);
+        System.out.println("millisecond took:" + totalTime + "with multithreading");
         log.debug("End");
     }
 
@@ -53,14 +53,13 @@ public class FileCharacterCountController {
                 Path tempFilePath = Files.copy(originalFilePath, Path.of("temp", originalFilePath.getFileName().toString()), StandardCopyOption.REPLACE_EXISTING);
                 String content = Files.readString(tempFilePath);
                 charCount = content.length();
-                System.out.println("Filename: " + tempFilePath + ", Char Count: " + charCount);
             } catch (IOException e) {
                 throw new RuntimeException("Error reading file: " + filename, e);
             }
         }
         long endTime = System.currentTimeMillis();
         long totalTime = endTime - startTime;
-        System.out.println("millisecond took:" + totalTime);
+        System.out.println("millisecond took:" + totalTime + "without multithreading");
         log.debug("End");
     }
 }
