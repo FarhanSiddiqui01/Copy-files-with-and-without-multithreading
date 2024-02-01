@@ -24,7 +24,7 @@ public class FileCharacterCountController {
 
     private static final String DEFAULT_FILE_DIRECTORY = "files";
 
-    @PostMapping("/copyFileAndCountCharactersSimple")
+    @PostMapping("/copyFileAndCountCharacters")
     public void processFiles(@RequestBody List<String> relativeFilePaths) throws InterruptedException {
         log.debug("Start: list of paths : {}", relativeFilePaths);
         long startTime = System.currentTimeMillis();
